@@ -1,0 +1,42 @@
+
+.post-header {
+    display: flex;
+    align-items: start;
+    padding: 2vmin;
+  }
+
+  .post-details{
+    display: flex;
+    align-items: start;
+  }
+
+  .profile-image-container {
+    width: 5vmin;
+    height: 5vmin;
+    margin-right: 1vw;
+  }
+  
+  .profile-image {
+    width: 5vmin;
+    height: 5vmin;
+    border-radius: 50%;
+  }
+  
+  .user-details {
+    height: 4vmin;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .username {
+    font-size: 2vmin;
+    font-weight: 200;
+    color: #fffefe;
+  }
+  
+  .location {
+    font-size: 1.2vmin;
+    font-weight: 100;
+    color: #fffefe;
+  }
+  

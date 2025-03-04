@@ -1,0 +1,25 @@
+header{
+    position : fixed;
+    display : flex;
+    width : 100vw;
+    height: 15vh;
+    border-radius: 4px;
+    box-shadow: 5px 5px 10px rgba(117, 116, 116, 0.2);
+    background-color: black;
+    top:0;
+    z-index:2;
+  }
+  
+  header nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 40%;
+    height: 100%;
+    margin:auto;
+    margin-left: 15vw;
+  }
+
+  
+  
+  

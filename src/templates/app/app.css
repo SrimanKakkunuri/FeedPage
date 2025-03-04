@@ -1,0 +1,13 @@
+html{
+    height:100%;
+    width:100%;
+  }
+body{
+    margin : 0px;
+    padding : 0px;
+    font-family: Comic Sans MS , cursive;
+    background-color: rgb(243, 243, 243);
+    height: 100%;
+    width: 100%;
+    background-color: black;
+  }

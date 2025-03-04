@@ -1,0 +1,8 @@
+.post {
+    height:auto;
+    width:42vw;
+    border: 0.1vmin solid #606060;
+    border-radius: 1vmin;
+    background: rgb(0, 0, 0);
+    margin:1.5vmin auto;
+  }

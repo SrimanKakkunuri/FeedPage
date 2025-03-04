@@ -1,0 +1,16 @@
+.nav_link .nav_text button {
+    text-decoration: none;
+    color:#eeeeee;
+    font-size: 1.4vw;
+    font-weight: bold;
+  }
+  
+  .nav_link:hover .nav_text button {
+    color: #cf2e2e;
+    cursor: pointer;
+  }
+
+  button {
+    background-color: #000000;
+    border: none;
+  }
