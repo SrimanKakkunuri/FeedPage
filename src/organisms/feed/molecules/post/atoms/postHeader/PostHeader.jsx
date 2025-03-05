@@ -1,5 +1,5 @@
 import './postHeader.css';
-import postProfilePhoto from '../../assets/post-profile.webp';
+import postProfilePhoto from '../../../../../../assets/post-profile.webp';
 
 export default function PostHeader({userName,location}){
     return (

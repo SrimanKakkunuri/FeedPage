@@ -1,7 +1,7 @@
 import './body.css';
-import Feed from '../feed/Feed';
-import FilterForm from '../../molecules/filterForm/FilterFrom';
-import Profile from '../../molecules/profile/Profile';
+import Feed from '../feed/index';
+import FilterForm from '../filterForm/index';
+import Profile from './atoms/profile/index';
 import { userInfo } from './constants/userInformation'; 
 
 export default function Body({displayState, feedPosts ,filterFormDisplay,filterFormSubmitHandler}){

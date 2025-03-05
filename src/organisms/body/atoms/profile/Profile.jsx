@@ -1,5 +1,5 @@
 import './profile.css';
-import profileImage from '../../assets/profile-photo.jpg';
+import profileImage from '../../../../assets/profile-photo.jpg';
 
 
 export default function Profile({userInfo}){

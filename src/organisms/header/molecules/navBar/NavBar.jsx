@@ -1,5 +1,5 @@
 import './navBar.css';
-import NavItem from '../../atoms/navItem/NavItem.jsx';
+import NavItem from './atoms/navItem/index';
 
 export default function NavBar({navItems ,navItemsHandlers}){
 

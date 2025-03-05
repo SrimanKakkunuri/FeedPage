@@ -1,6 +1,6 @@
 
 import './feed.css';
-import Post from '../../molecules/post/Post.jsx';
+import Post from './molecules/post/index';
 
 
 export const Feed = ({posts}) => {
