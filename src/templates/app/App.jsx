@@ -1,8 +1,17 @@
 import './app.css';
-import { useState , useCallback} from 'react';
+import { useState , useCallback , useEffect , useRef} from 'react';
 import Header from '../../organisms/header/Header.jsx';
 import Body from '../../organisms/body/Body.jsx';
 import mockFeedData from './constants/mockFeedData.js';
+
+function debounce (fn, delay = 500){
+  let timerId = null;
+  return (...args) => {
+      clearTimeout(timerId);
+      timerId = setTimeout(() => fn(...args), delay);
+  };
+};
+
 
 
 function App() {
@@ -11,16 +20,8 @@ function App() {
   const [searchInput,setSearchInput] = useState('');
   const [bodyDisplay,setbodyDisplay] = useState('feed');
   const [filterFormDisplay , setfilterFormDisplay] = useState(false);
-
-
-  function debounce (fn, delay = 500){
-    let timerId = null;
-    return (...args) => {
-        clearTimeout(timerId);
-        timerId = setTimeout(() => fn(...args), delay);
-    };
-  };
-
+  const loader = useRef(null);
+  
   const search = useCallback(function search(searchValue) {
     if (!searchValue.trim()) {
       if(displayPosts !== allPosts)
@@ -91,7 +92,30 @@ function App() {
   }
 
 
+  useEffect(() => {
 
+    const loaderDiv = loader.current; 
+
+    function handleObserver(entries){
+      const target = entries[0];
+      if (target.isIntersecting) {
+        console.log()
+        setDisplayPosts((prevDisplayPosts) => [...prevDisplayPosts,...allPosts]);
+      }
+    }
+    const option = {
+      root: null,
+      rootMargin: "20px",
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver(handleObserver, option);
+    if (loaderDiv) observer.observe(loaderDiv);
+
+    return () => {
+      if (loaderDiv) observer.unobserve(loaderDiv);
+    };
+  }, [allPosts]);
 
   function showProfileHandler(){
     setbodyDisplay('profile');
@@ -118,6 +142,7 @@ function App() {
       filterFormDisplay={filterFormDisplay} 
       filterFormSubmitHandler={applyFilter}
       />
+      <div ref={loader}/>
     </>
   )
 }
