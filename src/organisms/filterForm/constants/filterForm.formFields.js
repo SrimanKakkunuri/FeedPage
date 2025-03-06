@@ -1,5 +1,5 @@
 
-export const fields = [
+export const FIELD_INFO = [
     {
         id:"fromDate",
         label: "FromDate",

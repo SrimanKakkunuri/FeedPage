@@ -2,7 +2,7 @@ import './body.css';
 import Feed from '../feed/index';
 import FilterForm from '../filterForm/index';
 import Profile from './atoms/profile/index';
-import { userInfo } from './constants/userInformation'; 
+import { USER_INFO } from './constants/userInformation'; 
 
 export default function Body({displayState, feedPosts ,filterFormDisplay,filterFormSubmitHandler}){
 
@@ -16,7 +16,7 @@ export default function Body({displayState, feedPosts ,filterFormDisplay,filterF
             display = <div className='nomatch-message'><h1>No Matching Posts with that Search Value</h1></div>
             break;
         case 'profile':
-            display = <Profile userInfo={userInfo}/>
+            display = <Profile userInfo={USER_INFO}/>
             break;
         case 'no-matching-filter':
             display = <div className='nomatch-message'><h1>No Matching Posts with that Filter</h1></div>

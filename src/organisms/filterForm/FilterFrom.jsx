@@ -1,11 +1,11 @@
 import './filterForm.css';
 import { useState } from 'react';
-import {fields} from './constants/filterForm.formFields'
+import {FIELD_INFO} from './constants/filterForm.formFields'
 
 
 export default function FilterForm({displayState,submitHandler}){
 
-    const initialState = fields.reduce((acc, field) => {
+    const initialState = FIELD_INFO.reduce((acc, field) => {
         acc[field.id] = '';
         return acc;
       }, {});
@@ -58,7 +58,7 @@ export default function FilterForm({displayState,submitHandler}){
     return (
         <div id="filterModal" className={displayState ? "modal" : "modal nodisplay"}>
             <div class="filter-modal-content">
-                {renderForm(fields)}
+                {renderForm(FIELD_INFO)}
             </div>
         </div>
     )
