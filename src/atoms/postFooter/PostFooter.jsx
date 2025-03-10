@@ -1,19 +1,24 @@
 import './postFooter.css';
 
 
-export default function PostFooter({ likes, comments, shares, caption, userName, postDate }){
 
-  
+export default function PostFooter({ likes, comments, shares, caption, userName, postDate, id, handleLike ,isLiked}){
+
     const formattedDate = new Date(postDate).toLocaleDateString('en-US', {
         month: 'short',
         day: 'numeric'
     });
 
+    function likeHandler(){
+      handleLike(id);
+    }
+
+
     return (
         <div className="post-footer">
           <div className="action-buttons">
               <div>
-                <button className="like-btn"><i className="fa-regular fa-heart fa-lg like-button-icon"></i></button>
+                <button className="like-btn" onClick={likeHandler}>{isLiked ? <i class="fa-solid fa-heart fa-lg" style={{color: "#ff0000"}}></i> : <i className="fa-regular fa-heart fa-lg"></i> }</button>
                 <span>{likes}</span>
               </div>
               <div>

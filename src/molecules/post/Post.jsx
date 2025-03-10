@@ -4,7 +4,7 @@ import PostHeader from '../../atoms/postHeader/PostHeader.jsx';
 import PostContent from '../../atoms/postContent/PostContent.jsx';
 import PostFooter from '../../atoms/postFooter/PostFooter.jsx';
 
-export default function Post({post}){
+export default function Post({post,handleLike}){
     const {
         userName,
         location,
@@ -13,7 +13,9 @@ export default function Post({post}){
         likes,
         comments,
         shares,
-        postDate
+        postDate,
+        id,
+        liked
       } = post;
     
       return (
@@ -26,12 +28,15 @@ export default function Post({post}){
             imageUrl={imageUrl}
           />
           <PostFooter 
+            id={id}
             likes={likes}
             comments={comments}
             shares={shares}
             caption={caption}
             userName={userName}
             postDate={postDate}
+            handleLike ={handleLike}
+            isLiked={liked}
           />
         </article>
       );

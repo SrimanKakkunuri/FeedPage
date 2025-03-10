@@ -1,12 +1,18 @@
 import './app.css';
-import { useState , useCallback} from 'react';
+import { useState , useCallback, useMemo} from 'react';
 import Header from '../../organisms/header/Header.jsx';
 import Body from '../../organisms/body/Body.jsx';
 import mockFeedData from './constants/mockFeedData.js';
 
 
+
 function App() {
-  const [allPosts] = useState(mockFeedData);
+  const feedData = useMemo(() => {
+    return mockFeedData.map((post) => { 
+      return {...post,liked:false};
+    })
+  },[]);
+  const [allPosts,setAllPosts] = useState(feedData); 
   const [displayPosts, setDisplayPosts] = useState(allPosts);
   const [searchInput,setSearchInput] = useState('');
   const [bodyDisplay,setbodyDisplay] = useState('feed');
@@ -49,6 +55,26 @@ function App() {
 
   const debouncedSearch = useCallback(debounce(search, 1000),[search]);
 
+  function handleLike(id){
+    const newAllPosts = allPosts.map((post)=>{
+      if(post.id === id){
+        return {...post,likes : post.liked === false ? post.likes+1 : post.likes-1 , liked : !post.liked};
+      }
+      else{
+        return post;
+      }
+    });
+    const newDisplayPosts = displayPosts.map((post)=>{
+      if(post.id === id){
+        return {...post,likes : post.liked === false ? post.likes+1 : post.likes-1 , liked : !post.liked};
+      }
+      else{
+        return post;
+      }
+    });
+    setDisplayPosts(newDisplayPosts);
+    setAllPosts(newAllPosts);
+  }
 
   function searchInputHandler(e){
     const value = e.target.value;
@@ -72,6 +98,8 @@ function App() {
     
     return checkDate >= start && checkDate <= end;
   }
+
+
 
 
 
@@ -115,6 +143,7 @@ function App() {
       <Body
       displayState={bodyDisplay}
       feedPosts={displayPosts} 
+      handleLike = {handleLike}
       filterFormDisplay={filterFormDisplay} 
       filterFormSubmitHandler={applyFilter}
       />
