@@ -4,13 +4,13 @@ import FilterForm from '../../molecules/filterForm/FilterFrom';
 import Profile from '../../molecules/profile/Profile';
 import { userInfo } from './constants/userInformation'; 
 
-export default function Body({displayState, feedPosts ,filterFormDisplay,filterFormSubmitHandler}){
+export default function Body({displayState, feedPosts ,filterFormDisplay,filterFormSubmitHandler ,handleLike}){
 
     let display;
 
     switch (displayState) {
         case 'feed':
-            display = <><Feed posts={feedPosts}/> <FilterForm displayState={filterFormDisplay} submitHandler={filterFormSubmitHandler}/></>
+            display = <><Feed posts={feedPosts} handleLike={handleLike}/> <FilterForm displayState={filterFormDisplay} submitHandler={filterFormSubmitHandler}/></>
             break;
         case 'no-matching-search':
             display = <div className='nomatch-message'><h1>No Matching Posts with that Search Value</h1></div>
