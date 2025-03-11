@@ -3,10 +3,13 @@
     color:#eeeeee;
     font-size: 1.4vw;
     font-weight: bold;
+    border-radius: 10px;
+    padding: 0.7vmin;
   }
   
   .nav_link:hover .nav_text button {
-    color: #cf2e2e;
+    background-color: #716d6d;
+    color: #000000;
     cursor: pointer;
   }
 

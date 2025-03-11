@@ -1,12 +1,17 @@
 import './app.css';
-import { useState , useCallback} from 'react';
+import { useState , useCallback, useMemo} from 'react';
 import Header from '../../organisms/header/Header.jsx';
 import Body from '../../organisms/body/Body.jsx';
 import mockFeedData from './constants/mockFeedData.js';
 
 
 function App() {
-  const [allPosts] = useState(mockFeedData);
+  const feedData = useMemo(() => {
+    return mockFeedData.map((post) => { 
+      return {...post,comments:[]};
+    })
+  },[]);
+  const [allPosts,setAllPosts] = useState(feedData);
   const [displayPosts, setDisplayPosts] = useState(allPosts);
   const [searchInput,setSearchInput] = useState('');
   const [bodyDisplay,setbodyDisplay] = useState('feed');
@@ -102,6 +107,27 @@ function App() {
     setDisplayPosts(allPosts);
   }
 
+  function commentHandler(id,comment){
+    const newAllPosts = allPosts.map((post)=>{
+      if(post.id === id){
+        return {...post , noOfComments: post.noOfComments + 1 , comments : [...post.comments,comment]};
+      }
+      else{
+        return post;
+      }
+    });
+    const newDisplayPosts = displayPosts.map((post)=>{
+      if(post.id === id){
+        return {...post , noOfComments: post.noOfComments + 1 , comments : [...post.comments,comment]};
+      }
+      else{
+        return post;
+      }
+    });
+    setDisplayPosts(newDisplayPosts);
+    setAllPosts(newAllPosts);
+  }
+
 
   return (
     <>
@@ -117,6 +143,7 @@ function App() {
       feedPosts={displayPosts} 
       filterFormDisplay={filterFormDisplay} 
       filterFormSubmitHandler={applyFilter}
+      commentHandler={commentHandler}
       />
     </>
   )
