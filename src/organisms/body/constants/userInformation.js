@@ -1,4 +1,4 @@
-export const userInfo = {
+export const USER_INFO = {
         name: "Sriman Kakkunuri",
         email: "srimankakkunuri@gmail.com",
         age: 20,
